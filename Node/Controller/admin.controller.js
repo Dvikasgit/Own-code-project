@@ -67,16 +67,6 @@ export const takeRating = async (req,res) =>{
     }
 }
 
-export const getRatingall = async (req,res) =>{
-    const {rate , feedback } = req.body
-    try {
-        const  ratingShow = await ratindSc.find({})
-         res.status(200).json(ratingShow);
-     } catch (error) {
-         console.log(error)
-     }
-}
-
 
 export const singleItem = async (req,res) =>{
     const {id} = req.body
@@ -89,9 +79,20 @@ export const singleItem = async (req,res) =>{
     }
 }
 
+export const getRatingall = async (req,res) =>{
+    console.log("req.body.params",req.params.id)
+    const getRating = await ratindSc.findById(req.params.id)
+    res.status(200).json(getRating)
+}
+
 export const singleGet = async (req,res) =>{
-    //const {id} = req.body
-      console.log("req.body.params",req.params.id)
+     //console.log("req.body.params",req.params.id)
     const neww = await hotelModel.findById(req.params.id)
     res.status(200).json(neww);
 }
+
+export const getWithoutId  = async (req,res) => {
+    const getWithout = await ratindSc.find({})
+    res.status(200).json(getWithout)
+}
+

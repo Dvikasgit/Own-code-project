@@ -5,7 +5,6 @@ import Hotel from "./Component/Hotel";
 import Login from "./Component/Login";
 import Nav from "./Component/Nav";
 import RatingTake from "./Component/RatingTake";
-// import RatingS from './Component/RatingS';
 import Register from "./Component/Register";
 import ViewIt from "./Component/ViewIt";
 
@@ -20,7 +19,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/hotel" element={<Hotel />} />
         <Route path="/view/:id" element={<ViewIt />} />
-        <Route path="/Ratingt" element={<RatingTake />} />
+        <Route path="/Ratingt/:id" element={<RatingTake />} />
       </Routes>
     </>
   );

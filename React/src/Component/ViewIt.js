@@ -24,7 +24,7 @@ export default function  ViewIt() {
    useEffect(()=>{
     getDataById()
    },[])
-    console.log(data);
+     console.log(data);
 
   return (
     <>
@@ -44,8 +44,9 @@ export default function  ViewIt() {
           <h5 className="card-title">Phone-Number : - {data.hotelNumber}</h5>
           <h5 className="card-title">Reason To Choose : - {data.reason}</h5>
           <button>
-            {/* <Link to={`/Ratingt/${data._id}`}>View-More</Link> */}
-            <Link to={`/Ratingt/${data._id}`}>Rating-Give</Link>
+            <Link to={`/Ratingt/${data._id}`}>View-More</Link>
+            {/* <Link to={"/Ratingt"}>Rating-Give</Link> */}
+
 
           </button>
         </div>

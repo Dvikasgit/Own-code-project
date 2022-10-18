@@ -1,51 +1,58 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function RatingTake() {
+  const id = useParams();
+  const _id = id._id;
+  console.log(_id);
+  const [data, setData] = useState([]);
+
+  const getRatingById = () => {
+    axios.get(`http://localhost:3030/rating/${_id}`).then((res)=>{
+      // console.log("res",res.data);
+      const ratingData = res.data
+      setData(ratingData)
+      // console.log(data)
+       
+    }).catch((err)=>{
+      console.log(err)
+    })
+    
+  }
+
+  useEffect(() => {
+    getRatingById();
+  },[]);
+  console.log(data)
+
+  //  console.log(_id);
   return (
+
     <>
-      <div>RatingTake</div>
-      <div className="dropdown">
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Select Rating
-        </button>
-        <ul className="dropdown-menu">
-          <li>
-            <a className="dropdown-item" href="\">
-              1
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="\">
-              2
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="\">
-              3
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="\">
-              4
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="\">
-              5
-            </a>
-          </li>
-        </ul>
-      </div>
-      <br/>
-        <div className="input-group mb-3">
-  <span className="input-group-text" id="inputGroup-sizing-default">Feedback</span>
-  <input type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" />
-</div>
+    <div>This is hotal page</div>
+    
+       <div key={data._id} className="card">
+          <h5 className="card-title" >Rate : - {data.rate} </h5>
+          <h5 className="card-title" >Feedback : -{data.feedback}</h5>
+       </div>
+    
+  {/* {
+    
+     data.map((item) => {
+     return<>
+     <div>RatingTake </div> 
+     <div className="card-body">
+       <h5 className="card-title">Rating : - {item.rate}</h5>
+       <h5  className="card-title">Feedback : - {item.feedback}</h5>
+     </div>
+     </>
+     }
+    
+)
+  } */}
     </>
+   
+ 
   );
 }
