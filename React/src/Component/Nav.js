@@ -19,6 +19,9 @@ export default function Nav() {
   <li className="nav-item">
   <Link className='nav-link' to="hotel">Hotel-List</Link>      
   </li>
+  <li className="nav-item">
+  <Link className='nav-link' to="rshow">Show-Rating</Link>      
+  </li>
   
 </ul>
     </div>

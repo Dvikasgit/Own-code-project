@@ -60,7 +60,7 @@ export const getHotelD = async (req,res ) => {
 export const takeRating = async (req,res) =>{
     const {rate , feedback } = req.body
     try {
-       const  rating = await ratindSc.create({rate : rate , feedback : feedback})
+       const  rating = await ratindSc.create({rate : rate , feedback : feedback })
         res.status(200).json(rating);
     } catch (error) {
         console.log(error)
